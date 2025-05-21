@@ -1,4 +1,4 @@
-# DeepL Project
+## DeepL Project
 
 ## How to clone
 
