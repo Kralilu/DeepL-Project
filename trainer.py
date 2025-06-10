@@ -23,7 +23,7 @@ class VARTrainer(object):
         var_opt: AmpOptimizer, label_smooth: float,
     ):
         super(VARTrainer, self).__init__()
-
+        self.device = device
         self.var = var_wo_ddp
         self.vae_local, self.quantize_local = vae_local, vae_local.quantize
         self.quantize_local: VectorQuantizer2
