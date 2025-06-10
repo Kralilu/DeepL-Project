@@ -22,7 +22,7 @@ except ImportError as e:
 
 
 class Args(Tap):
-    data_path: str = "/home/gaya/tiny-imagenet-200"
+    data_path: str = "/content/DeepL-Project/tiny-imagenet-200"
     exp_name: str = 'text'
     
     # VAE
