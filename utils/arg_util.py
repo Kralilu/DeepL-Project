@@ -259,7 +259,7 @@ def init_dist_and_get_args():
     
     args.patch_nums = tuple(map(int, args.pn.replace('-', '_').split('_')))
     args.resos = tuple(pn * args.patch_size for pn in args.patch_nums)
-    args.data_load_reso = max(args.resos)
+    args.data_load_reso = 64
     
     # update args: bs and lr
     # bs_per_gpu = round(args.bs / args.ac / dist.get_world_size())
