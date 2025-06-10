@@ -98,7 +98,7 @@ def build_everything(args: arg_util.Args):
     if not os.path.exists(vae_ckpt):
         os.system(f'wget https://huggingface.co/FoundationVision/var/resolve/main/{vae_ckpt}')
 
-    vae_local.load_state_dict(torch.load(vae_ckpt, map_location='cpu'), strict=True)
+    # vae_local.load_state_dict(torch.load(vae_ckpt, map_location='cpu'), strict=True)
     
     vae_local: VQVAE = args.compile_model(vae_local, args.vfast)
     var_wo_ddp: VAR = args.compile_model(var_wo_ddp, args.tfast)
