@@ -19,7 +19,7 @@ BTen = torch.BoolTensor
 class VARTrainer(object):
     def __init__(
         self, device, patch_nums: Tuple[int, ...], resos: Tuple[int, ...],
-        vae_local: VQVAE, var_wo_ddp: VAR,
+        vae_local: VQVAE, var_wo_ddp: VAR, var: VAR,
         var_opt: AmpOptimizer, label_smooth: float,
     ):
         super(VARTrainer, self).__init__()
@@ -28,6 +28,7 @@ class VARTrainer(object):
         self.vae_local, self.quantize_local = vae_local, vae_local.quantize
         self.quantize_local: VectorQuantizer2
         self.var_wo_ddp: VAR = var_wo_ddp  # after torch.compile
+        self.var = var
         self.var_opt = var_opt
         
         del self.var_wo_ddp.rng
