@@ -98,7 +98,7 @@ def make_attn(in_channels, using_sa=True):
 
 class Encoder(nn.Module):
     def __init__(
-        self, *, ch=160, ch_mult=(1, 2, 4, 8), num_res_blocks=2,
+        self, *, ch=128, ch_mult=(1, 2, 4, 8), num_res_blocks=2,
         dropout=0.0, in_channels=3,
         z_channels, double_z=False, using_sa=True, using_mid_sa=True,
     ):
@@ -162,7 +162,7 @@ class Encoder(nn.Module):
 
 class Decoder(nn.Module):
     def __init__(
-        self, *, ch=160, ch_mult=(1, 2, 4, 8), num_res_blocks=2,
+        self, *, ch=128, ch_mult=(1, 2, 4, 8), num_res_blocks=2,
         dropout=0.0, in_channels=3,  # in_channels: raw img channels
         z_channels, using_sa=True, using_mid_sa=True,
     ):
