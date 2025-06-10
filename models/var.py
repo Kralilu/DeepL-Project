@@ -45,7 +45,7 @@ class VAR(nn.Module):
             cur += pn ** 2
         
         self.num_stages_minus_1 = len(self.patch_nums) - 1
-        self.rng = torch.Generator(device=self.get_device()
+        self.rng = torch.Generator(device=self.get_device())
         
         # 1. input (word) embedding
         quant: VectorQuantizer2 = vae_local.quantize
@@ -56,7 +56,7 @@ class VAR(nn.Module):
         # 2. class embedding
         init_std = math.sqrt(1 / self.C / 3)
         self.num_classes = num_classes
-        self.uniform_prob = torch.full((1, num_classes), fill_value=1.0 / num_classes, dtype=torch.float32, device=self.get_device)
+        self.uniform_prob = torch.full((1, num_classes), fill_value=1.0 / num_classes, dtype=torch.float32, device=self.get_device())
         self.class_emb = nn.Embedding(self.num_classes + 1, self.C)
         nn.init.trunc_normal_(self.class_emb.weight.data, mean=0, std=init_std)
         self.pos_start = nn.Parameter(torch.empty(1, self.first_l, self.C))
