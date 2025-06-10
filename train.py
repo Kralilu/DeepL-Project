@@ -19,12 +19,12 @@ importlib.reload(arg_util)
 print("[DEBUG] arg_util path:", arg_util.__file__)
 print("[DEBUG] Args has set_tf32?:", hasattr(arg_util.Args, "set_tf32"))
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "2"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 
-print("CUDA_VISIBLE_DEVICES =", os.environ.get("CUDA_VISIBLE_DEVICES"))
-print("torch.cuda.device_count() =", torch.cuda.device_count())
-print("Current device:", torch.cuda.current_device())
-print("GPU name:", torch.cuda.get_device_name(torch.cuda.current_device()))
+# print("CUDA_VISIBLE_DEVICES =", os.environ.get("CUDA_VISIBLE_DEVICES"))
+# print("torch.cuda.device_count() =", torch.cuda.device_count())
+# print("Current device:", torch.cuda.current_device())
+# print("GPU name:", torch.cuda.get_device_name(torch.cuda.current_device()))
 
 def build_everything(args: arg_util.Args):
     # resume
