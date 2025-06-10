@@ -45,7 +45,7 @@ class VAR(nn.Module):
             cur += pn ** 2
         
         self.num_stages_minus_1 = len(self.patch_nums) - 1
-        self.rng = torch.Generator(device=self.get_device)
+        self.rng = torch.Generator(device=self.get_device()
         
         # 1. input (word) embedding
         quant: VectorQuantizer2 = vae_local.quantize
@@ -113,7 +113,8 @@ class VAR(nn.Module):
         # 6. classifier head
         self.head_nm = AdaLNBeforeHead(self.C, self.D, norm_layer=norm_layer)
         self.head = nn.Linear(self.C, self.V)
-    
+    def get_device(self):
+          return self.device if hasattr(self, 'device') else 'cpu'
     def get_logits(self, h_or_h_and_residual: Union[torch.Tensor, Tuple[torch.Tensor, torch.Tensor]], cond_BD: Optional[torch.Tensor]):
         if not isinstance(h_or_h_and_residual, torch.Tensor):
             h, resi = h_or_h_and_residual   # fused_add_norm must be used
