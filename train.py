@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader
 from utils import misc
 from utils import arg_util
 from utils.data import build_dataset
-from utils.data_sampler import DistInfiniteBatchSampler, EvalDistributedSampler
+from utils.data_sampler import InfiniteBatchSampler
 from utils.misc import auto_resume
 
 import importlib
