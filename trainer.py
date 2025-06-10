@@ -61,8 +61,8 @@ class VARTrainer(object):
         self.var_wo_ddp.eval()
         for inp_B3HW, label_B in ld_val:
             B, V = label_B.shape[0], self.vae_local.vocab_size
-            inp_B3HW = inp_B3HW.to(self.get_device, non_blocking=True)
-            label_B = label_B.to(self.get_device, non_blocking=True)
+            inp_B3HW = inp_B3HW.to(self.device, non_blocking=True)
+            label_B = label_B.to(self.device, non_blocking=True)
             
             gt_idx_Bl: List[ITen] = self.vae_local.img_to_idxBl(inp_B3HW)
             gt_BL = torch.cat(gt_idx_Bl, dim=1)
