@@ -64,8 +64,8 @@ class Args(Tap):
     fuse: bool = True       # whether to use fused op like flash attn, xformers, fused MLP, fused LayerNorm, etc.
     
     # data
-    pn: str = '1_2_3_4_5_6_8'
-    patch_size: int = 16
+    pn: str = '1_2_3_4'
+    patch_size: int = 8
     patch_nums: tuple = None    # [automatically set; don't specify this] = tuple(map(int, args.pn.replace('-', '_').split('_')))
     resos: tuple = None         # [automatically set; don't specify this] = tuple(pn * args.patch_size for pn in args.patch_nums)
     
@@ -226,7 +226,7 @@ def init_dist_and_get_args():
         args.local_debug = 'KEVIN_LOCAL' in os.environ
 
     if args.local_debug:
-        args.pn = '1_2_3'
+        args.pn = '1_2_3_4'
         args.seed = 1
         args.aln = 1e-2
         args.alng = 1e-5
@@ -253,7 +253,7 @@ def init_dist_and_get_args():
     # set env
     args.set_tf32(args.tf32)
     args.seed_everything(benchmark=args.pg == 0)
-    args.pn = '1_2_3_4_5_6_7_8'
+    args.pn = '1_2_3_4'
     # update args: data loading
     args.device = 'cuda' if torch.cuda.is_available() else 'cpu'
     
